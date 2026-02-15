@@ -1,65 +1,183 @@
-import Image from "next/image";
+import NowPlaying from "@/components/NowPlaying";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
+    <div className="max-w-2xl mx-auto px-6 py-12 md:py-20">
+      {/* ── Header ── */}
+      <header className="mb-10">
+        <h1 className="text-2xl font-semibold tracking-tight mb-1">
+          Ojas Kalra
+        </h1>
+        <p className="text-sm text-[var(--text-dim)] mb-1">
+          QT Intern @ IMC Trading · Math & CS @ Georgia Tech
+        </p>
+        <NowPlaying />
+        <div className="flex items-center gap-4 text-xs text-[var(--text-dim)] mt-4">
           <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+            href="https://github.com/ojas480"
             target="_blank"
             rel="noopener noreferrer"
+            className="hover:text-white"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
+            GitHub ↗
           </a>
           <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+            href="https://www.linkedin.com/in/ojaskalra/"
             target="_blank"
             rel="noopener noreferrer"
+            className="hover:text-white"
           >
-            Documentation
+            LinkedIn ↗
+          </a>
+          <a href="mailto:ojaskrishwork@gmail.com" className="hover:text-white">
+            Email ↗
+          </a>
+          <a
+            href="https://open.spotify.com/artist/3yzwkjP8ux7xvoAWRyCFuh"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-white"
+          >
+            Spotify ↗
           </a>
         </div>
-      </main>
+      </header>
+
+      {/* ── Experience ── */}
+      <section className="mb-10">
+        <h2 className="section-label">Experience</h2>
+        {experiences.map((e, i) => (
+          <div key={i} className="card">
+            <div className="flex items-center justify-between">
+              <p className="text-sm font-medium text-white">{e.company}</p>
+              <span className="text-xs text-[var(--text-dim)] font-mono shrink-0 ml-4">
+                {e.date}
+              </span>
+            </div>
+            <p className="text-xs text-[var(--text-dim)]">{e.role}</p>
+          </div>
+        ))}
+      </section>
+
+      {/* ── Projects ── */}
+      <section className="mb-10">
+        <h2 className="section-label">Projects</h2>
+        {projects.map((p, i) => (
+          <div key={i} className="card flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-4">
+            <p className="text-sm font-medium text-white sm:w-44 shrink-0 pt-0.5">{p.title}</p>
+            <p className="text-xs text-[var(--text-dim)] leading-relaxed opacity-70 flex-1">
+              {p.description}
+            </p>
+          </div>
+        ))}
+      </section>
+
+      {/* ── Research ── */}
+      <section className="mb-10">
+        <h2 className="section-label">Research</h2>
+        {research.map((r, i) => (
+          <div key={i} className="card flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-0">
+            <span className="text-xs text-[var(--text-dim)] sm:w-36 shrink-0 pt-0.5 font-mono">
+              {r.date}
+            </span>
+            <div className="flex-1 min-w-0">
+              <div className="flex items-center gap-2">
+                <p className="text-sm font-medium text-white leading-tight">
+                  {r.title}
+                </p>
+                {r.link && (
+                  <a
+                    href={r.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[var(--text-dim)] hover:text-white text-xs"
+                  >
+                    ↗
+                  </a>
+                )}
+              </div>
+              <p className="text-xs text-[var(--text-dim)] mb-0.5">{r.venue}</p>
+              <p className="text-xs text-[var(--text-dim)] leading-relaxed opacity-70">
+                {r.description}
+              </p>
+            </div>
+          </div>
+        ))}
+      </section>
+
+      {/* ── Footer ── */}
+      <footer className="pt-6 border-t border-[var(--border)]">
+        <p className="text-xs text-[var(--text-dim)] opacity-50">
+          © {new Date().getFullYear()} Ojas Kalra
+        </p>
+      </footer>
     </div>
   );
 }
+
+/* ── DATA ── */
+
+const experiences = [
+  {
+    role: "Quantitative Trader Intern",
+    company: "IMC Trading",
+    date: "Jun–Aug 2025",
+    description:
+      "Summer 2025 quantitative trading internship at one of the world's leading market makers.",
+  },
+  {
+    role: "Undergraduate Researcher",
+    company: "Georgia Institute of Technology",
+    date: "Jan 2024–Now",
+    description:
+      "ML for Financial Markets VIP Group. Research under Dr. Eunhye on ML applications in quantitative finance.",
+  },
+  {
+    role: "Undergraduate TA",
+    company: "Georgia Institute of Technology",
+    date: "Sep 2023–Now",
+    description:
+      "Grader for Combinatorics (Math 3012) and TA for Linear Algebra (Math 1554).",
+  },
+  {
+    role: "Investment Banking Intern",
+    company: "Brean Capital, LLC",
+    date: "Jun–Aug 2023",
+    description:
+      "Summer analyst in Manhattan. Deal execution and financial modeling.",
+  },
+];
+
+const projects = [
+  {
+    title: "ML Trading System",
+    description:
+      "Quantitative trading system using ML to predict short-term price movements. Backtested on 5+ years with Sharpe > 1.5.",
+  },
+  {
+    title: "Neural Network From Scratch",
+    description:
+      "Fully-connected NN library with backprop, multiple optimizers, and regularization.",
+  },
+  {
+    title: "Real-time Chat App",
+    description:
+      "Full-stack messaging platform with WebSockets, auth, and message persistence.",
+  },
+  {
+    title: "Portfolio Website",
+    description:
+      "This site. Next.js 16, React 19, Tailwind CSS v4.",
+  },
+];
+
+const research = [
+  {
+    title: "ML for Financial Markets",
+    venue: "Georgia Tech — VIP Research Group",
+    date: "2024–Now",
+    description:
+      "Researching ML-driven strategies for quantitative finance applications in the VIP program.",
+    link: "",
+  },
+];
