@@ -8,9 +8,6 @@ export default function Home() {
         <h1 className="text-2xl font-semibold tracking-tight mb-1">
           Ojas Kalra
         </h1>
-        <p className="text-sm text-[var(--text-dim)] mb-1">
-          QT Intern @ IMC Trading · Math & CS @ Georgia Tech
-        </p>
         <NowPlaying />
         <div className="flex items-center gap-4 text-xs text-[var(--text-dim)] mt-4">
           <a
@@ -105,10 +102,18 @@ export default function Home() {
         ))}
       </section>
 
+      {/* ── Interests ── */}
+      <section className="mb-10">
+        <h2 className="section-label">Interests</h2>
+        <p className="text-sm text-[var(--text-dim)] py-3">
+          🏃 Marathon Runner &nbsp;·&nbsp; 🎵 Music Producer &nbsp;·&nbsp; 🎸 Guitarist &nbsp;·&nbsp; ⚽ Soccer
+        </p>
+      </section>
+
       {/* ── Footer ── */}
       <footer className="pt-6 border-t border-[var(--border)]">
         <p className="text-xs text-[var(--text-dim)] opacity-50">
-          © {new Date().getFullYear()} Ojas Kalra
+          © {new Date().getFullYear()}
         </p>
       </footer>
     </div>
