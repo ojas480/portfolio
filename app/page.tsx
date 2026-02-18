@@ -1,6 +1,6 @@
 import NowPlaying from "@/components/NowPlaying";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 30;
 
 export default async function Home() {
   return (
