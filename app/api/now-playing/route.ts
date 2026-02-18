@@ -28,6 +28,9 @@ async function getAccessToken() {
     return data.access_token as string;
 }
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 export async function GET() {
     try {
         const accessToken = await getAccessToken();
@@ -35,6 +38,7 @@ export async function GET() {
         // Try currently playing first
         const nowRes = await fetch(NOW_PLAYING_URL, {
             headers: { Authorization: `Bearer ${accessToken}` },
+            cache: "no-store",
         });
 
         if (nowRes.status === 200) {
@@ -52,10 +56,24 @@ export async function GET() {
             }
         }
 
-        // Fall back to recently played
-        const recentRes = await fetch(RECENTLY_PLAYED_URL, {
-            headers: { Authorization: `Bearer ${accessToken}` },
-        });
+        // Fall back to recently played (with retry on 429)
+        const fetchRecent = async (): Promise<Response> => {
+            const res = await fetch(RECENTLY_PLAYED_URL, {
+                headers: { Authorization: `Bearer ${accessToken}` },
+                cache: "no-store",
+            });
+            if (res.status === 429) {
+                const retryAfter = Math.min(parseInt(res.headers.get("Retry-After") || "2", 10), 5);
+                await new Promise((r) => setTimeout(r, retryAfter * 1000));
+                return fetch(RECENTLY_PLAYED_URL, {
+                    headers: { Authorization: `Bearer ${accessToken}` },
+                    cache: "no-store",
+                });
+            }
+            return res;
+        };
+
+        const recentRes = await fetchRecent();
 
         if (recentRes.status === 200) {
             const data = await recentRes.json();

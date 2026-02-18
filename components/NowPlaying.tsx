@@ -30,15 +30,18 @@ export default function NowPlaying() {
             try {
                 const res = await fetch("/api/now-playing");
                 const json = await res.json();
-                setData(json);
+                // Only update if we got actual track data — preserves last known song
+                if (json.title) {
+                    setData(json);
+                }
             } catch {
-                setData(null);
+                // keep previous data on error
             }
         };
 
         fetchNowPlaying();
-        // Poll every 30 seconds
-        const interval = setInterval(fetchNowPlaying, 30000);
+        // Poll every 5 minutes to avoid Spotify rate limits
+        const interval = setInterval(fetchNowPlaying, 300000);
         return () => clearInterval(interval);
     }, []);
 
