@@ -61,7 +61,12 @@ export default function Home() {
         <h2 className="section-label">Projects</h2>
         {projects.map((p, i) => (
           <div key={i} className="card flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-4">
-            <p className="text-sm font-medium text-white sm:w-44 shrink-0 pt-0.5">{p.title}</p>
+            <div className="sm:w-44 shrink-0 pt-0.5 flex items-center gap-2">
+              <p className="text-sm font-medium text-white">{p.title}</p>
+              {p.link && (
+                <a href={p.link} target="_blank" rel="noopener noreferrer" className="text-[var(--text-dim)] hover:text-white text-xs">↗</a>
+              )}
+            </div>
             <p className="text-xs text-[var(--text-dim)] leading-relaxed opacity-70 flex-1">
               {p.description}
             </p>
@@ -154,6 +159,18 @@ const experiences = [
 ];
 
 const projects = [
+  {
+    title: "Analyzing Momentum at Wimbledon",
+    description:
+      "Data-driven exploration of swings of competitive advantage in tennis. Honorable Mention at MCM 2024.",
+    link: "/mcm-paper.pdf",
+  },
+  {
+    title: "Faulhaber's Formula Derivation",
+    description:
+      "A derivation and exploration of Faulhaber's formula for sums of powers.",
+    link: "/OjasKalraDRP.pdf",
+  },
   {
     title: "ML Trading System",
     description:
