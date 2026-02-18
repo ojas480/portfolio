@@ -52,7 +52,17 @@ async function getAccessToken(): Promise<string> {
     return data.access_token;
 }
 
+// In-memory cache to avoid rate limits and ensure widget never disappears
+let cachedTrack: SpotifyTrack | null = null;
+let cacheTime = 0;
+const CACHE_TTL = 30_000; // 30 seconds
+
 export async function getNowPlaying(): Promise<SpotifyTrack | null> {
+    // Return cached data if fresh enough
+    if (cachedTrack && Date.now() - cacheTime < CACHE_TTL) {
+        return cachedTrack;
+    }
+
     try {
         const accessToken = await getAccessToken();
         const headers = { Authorization: `Bearer ${accessToken}` };
@@ -66,7 +76,7 @@ export async function getNowPlaying(): Promise<SpotifyTrack | null> {
         if (nowRes.ok && nowRes.status !== 204) {
             const data = await nowRes.json();
             if (data?.item) {
-                return {
+                const result: SpotifyTrack = {
                     track: data.item.name,
                     artist: data.item.artists
                         .map((a: { name: string }) => a.name)
@@ -74,7 +84,15 @@ export async function getNowPlaying(): Promise<SpotifyTrack | null> {
                     url: data.item.external_urls.spotify,
                     isLive: data.is_playing === true,
                 };
+                cachedTrack = result;
+                cacheTime = Date.now();
+                return result;
             }
+        }
+
+        // Nothing is currently playing — update cache if it was marked live
+        if (cachedTrack?.isLive) {
+            cachedTrack = { ...cachedTrack, isLive: false };
         }
 
         // Fall back to recently played
@@ -88,7 +106,7 @@ export async function getNowPlaying(): Promise<SpotifyTrack | null> {
             const entry = data?.items?.[0];
             const item = entry?.track;
             if (item) {
-                return {
+                const result: SpotifyTrack = {
                     track: item.name,
                     artist: item.artists
                         .map((a: { name: string }) => a.name)
@@ -97,12 +115,17 @@ export async function getNowPlaying(): Promise<SpotifyTrack | null> {
                     isLive: false,
                     playedAt: entry.played_at ? timeAgo(entry.played_at) : undefined,
                 };
+                cachedTrack = result;
+                cacheTime = Date.now();
+                return result;
             }
         }
 
-        return null;
+        // If Spotify returned no data but we have cache, use it
+        return cachedTrack;
     } catch (err) {
         console.error("[Spotify]", err instanceof Error ? err.message : "Unknown error");
-        return null;
+        // On error, return cached data instead of null
+        return cachedTrack;
     }
 }

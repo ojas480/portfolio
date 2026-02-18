@@ -37,7 +37,7 @@ export default async function Home() {
             rel="noopener noreferrer"
             className="hover:text-white"
           >
-            Spotify ↗
+            My Spotify ↗
           </a>
         </div>
       </header>
