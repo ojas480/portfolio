@@ -1,6 +1,8 @@
 import NowPlaying from "@/components/NowPlaying";
 
-export default function Home() {
+export const dynamic = "force-dynamic";
+
+export default async function Home() {
   return (
     <div className="max-w-2xl mx-auto px-6 py-12 md:py-20">
       {/* ── Header ── */}
