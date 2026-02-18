@@ -143,11 +143,10 @@ const experiences = [
       "ML for Financial Markets VIP Group. Research under Dr. Eunhye on ML applications in quantitative finance.",
   },
   {
-    role: "Undergraduate TA",
+    role: "Undergraduate TA & Grader for Combinatorics",
     company: "Georgia Institute of Technology",
     date: "Sep 2023–Now",
-    description:
-      "Grader for Combinatorics (Math 3012) and TA for Linear Algebra (Math 1554).",
+    description: "",
   },
   {
     role: "Investment Banking Intern",
@@ -172,24 +171,16 @@ const projects = [
     link: "/OjasKalraDRP.pdf",
   },
   {
-    title: "ML Trading System",
+    title: "IMC Prosperity",
     description:
-      "Quantitative trading system using ML to predict short-term price movements. Backtested on 5+ years with Sharpe > 1.5.",
-  },
-  {
-    title: "Neural Network From Scratch",
-    description:
-      "Fully-connected NN library with backprop, multiple optimizers, and regularization.",
-  },
-  {
-    title: "Real-time Chat App",
-    description:
-      "Full-stack messaging platform with WebSockets, auth, and message persistence.",
+      "Top 100 out of 10,000 teams in the world's biggest trading competition.",
+    link: "https://github.com/ojas480/Prosperity2",
   },
   {
     title: "Portfolio Website",
     description:
       "This site. Next.js 16, React 19, Tailwind CSS v4.",
+    link: "https://github.com/ojas480/portfolio",
   },
 ];
 
