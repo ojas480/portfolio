@@ -42,6 +42,22 @@ export default async function Home() {
         </div>
       </header>
 
+      {/* ── Education ── */}
+      <section className="mb-10">
+        <h2 className="section-label">Education</h2>
+        {education.map((e, i) => (
+          <div key={i} className="card">
+            <div className="flex items-center justify-between">
+              <p className="text-sm font-medium text-white">{e.school}</p>
+              <span className="text-xs text-[var(--text-dim)] font-mono shrink-0 ml-4">
+                {e.date}
+              </span>
+            </div>
+            <p className="text-xs text-[var(--text-dim)]">{e.degree} · GPA: {e.gpa}</p>
+          </div>
+        ))}
+      </section>
+
       {/* ── Experience ── */}
       <section className="mb-10">
         <h2 className="section-label">Experience</h2>
@@ -109,6 +125,21 @@ export default async function Home() {
         ))}
       </section>
 
+      {/* ── Competitions & Awards ── */}
+      <section className="mb-10">
+        <h2 className="section-label">Competitions &amp; Awards</h2>
+        {awards.map((a, i) => (
+          <div key={i} className="card flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-4">
+            <div className="sm:w-44 shrink-0 pt-0.5">
+              <p className="text-sm font-medium text-white">{a.title}</p>
+            </div>
+            <p className="text-xs text-[var(--text-dim)] leading-relaxed opacity-70 flex-1">
+              {a.description}
+            </p>
+          </div>
+        ))}
+      </section>
+
       {/* ── Interests ── */}
       <section className="mb-10">
         <h2 className="section-label">Interests</h2>
@@ -129,6 +160,21 @@ export default async function Home() {
 
 /* ── DATA ── */
 
+const education = [
+  {
+    school: "Georgia Institute of Technology",
+    degree: "M.S. Computer Science",
+    gpa: "4.0/4.0",
+    date: "Jan 2026–Present",
+  },
+  {
+    school: "Georgia Institute of Technology",
+    degree: "B.S. Computer Science",
+    gpa: "3.7/4.0",
+    date: "Aug 2022–Dec 2025",
+  },
+];
+
 const experiences = [
   {
     role: "Quantitative Trader Intern",
@@ -138,11 +184,11 @@ const experiences = [
       "Summer 2025 quantitative trading internship at one of the world's leading market makers.",
   },
   {
-    role: "Undergraduate Researcher",
+    role: "Researcher — Machine Learning for Financial Markets Lab",
     company: "Georgia Institute of Technology",
     date: "Jan 2024–Now",
     description:
-      "ML for Financial Markets VIP Group. Research under Dr. Eunhye on ML applications in quantitative finance.",
+      "Research under Dr. Eunhye on ML applications in quantitative finance.",
   },
   {
     role: "Undergraduate TA & Grader for Combinatorics",
@@ -173,6 +219,12 @@ const projects = [
     link: "/OjasKalraDRP.pdf",
   },
   {
+    title: "Customer Insights Agentic AI",
+    description:
+      "Full-stack agentic AI application that analyzes and interacts with customer data to derive insights.",
+    link: "https://customer-insights-agentic-ai-nfqo.vercel.app/",
+  },
+  {
     title: "IMC Prosperity",
     description:
       "Top 100 out of 10,000 teams in the world's biggest trading competition.",
@@ -194,5 +246,23 @@ const research = [
     description:
       "Researching ML-driven strategies for quantitative finance applications in the VIP program.",
     link: "",
+  },
+];
+
+const awards = [
+  {
+    title: "2× AIME Qualifier",
+    description:
+      "Discovered competitive math in 10th grade and earned two AIME qualifications after about a year of self-study — a top ~2.5% finish among AMC participants nationwide.",
+  },
+  {
+    title: "1st Place — GT Trading Competition",
+    description:
+      "Won first place in the Georgia Tech trading competition, Mar 2026.",
+  },
+  {
+    title: "Top 1% — IMC Prosperity",
+    description:
+      "Finished in the top 1% out of 10,000+ teams in IMC's global algorithmic trading competition.",
   },
 ];
