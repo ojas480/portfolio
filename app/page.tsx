@@ -125,7 +125,7 @@ export default async function Home() {
                   </a>
                 )}
               </div>
-              <p className="text-xs text-[var(--text-dim)] mb-0.5">{r.venue}</p>
+              {r.venue && <p className="text-xs text-[var(--text-dim)] mb-0.5">{r.venue}</p>}
               <p className="text-xs text-[var(--text-dim)] leading-relaxed opacity-70">
                 {r.description}
               </p>
@@ -218,33 +218,33 @@ const projects = [
   {
     title: "Analyzing Momentum at Wimbledon",
     description:
-      "Data-driven exploration of swings of competitive advantage in tennis. Honorable Mention at MCM 2024.",
+      "Honorable Mention at MCM 2024.",
     link: "/mcm-paper.pdf",
     image: "/wimbledon.png",
   },
   {
     title: "Faulhaber's Formula Derivation",
     description:
-      "A derivation and exploration of Faulhaber's formula for sums of powers.",
+      "Derivation of Faulhaber's Formula",
     link: "/OjasKalraDRP.pdf",
     image: "/faulhaber.png",
   },
   {
     title: "Customer Insights Agentic AI",
     description:
-      "Full-stack agentic AI application that analyzes and interacts with customer data to derive insights.",
+      "Full-stack agentic AI for product sentiment",
     link: "https://customer-insights-agentic-ai-nfqo.vercel.app/",
     image: "/customer_insights.png",
   },
 ];
 
-const research = [
+type ResearchItem = { title: string; venue?: string; date: string; description: string; link: string; };
+const research: ResearchItem[] = [
   {
-    title: "ML for Financial Markets",
-    venue: "Georgia Tech — VIP Research Group",
+    title: "Machine Learning for Financial Markets",
     date: "2024–Now",
     description:
-      "Researching ML-driven strategies for quantitative finance applications in the VIP program.",
+      "Currently doing research on AI reproducibility",
     link: "",
   },
 ];
@@ -253,7 +253,7 @@ const awards = [
   {
     title: "2× AIME Qualifier",
     description:
-      "Discovered competitive math in 10th grade and earned two AIME qualifications after about a year of self-study — a top ~2.5% finish among AMC participants nationwide.",
+      "Discovered math comps in 10th grade and earned two AIME qualifications in a year of self-study",
   },
   {
     title: "1st Place — GT Trading Competition",
@@ -263,6 +263,6 @@ const awards = [
   {
     title: "Top 1% — IMC Prosperity",
     description:
-      "Finished in the top 1% out of 10,000+ teams in IMC's global algorithmic trading competition.",
+      "Finished in the top 1% out of 10,000+ teams in the world's biggest trading competition",
   },
 ];
