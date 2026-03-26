@@ -9,6 +9,15 @@
   --accent: #888;
 }
 
+.light {
+  --bg: #fafafa;
+  --bg-card: rgba(0, 0, 0, 0.04);
+  --border: rgba(0, 0, 0, 0.1);
+  --text: #1a1a1a;
+  --text-dim: #666;
+  --accent: #555;
+}
+
 @theme inline {
   --color-background: var(--bg);
   --color-foreground: var(--text);
@@ -24,6 +33,7 @@ body {
   color: var(--text);
   font-family: var(--font-sans), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 ::selection {

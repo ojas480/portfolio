@@ -14,11 +14,13 @@ export default function GridBackground() {
 
         const DOT_SPACING = 40;
         const DOT_RADIUS = 1;
-        const DOT_COLOR = "rgba(255, 255, 255, 0.12)";
 
         function draw() {
             canvas!.width = window.innerWidth;
             canvas!.height = document.documentElement.scrollHeight;
+
+            const isLight = document.documentElement.classList.contains("light");
+            const DOT_COLOR = isLight ? "rgba(0, 0, 0, 0.1)" : "rgba(255, 255, 255, 0.12)";
 
             const cols = Math.ceil(canvas!.width / DOT_SPACING) + 1;
             const rows = Math.ceil(canvas!.height / DOT_SPACING) + 1;
@@ -35,7 +37,11 @@ export default function GridBackground() {
 
         draw();
         window.addEventListener("resize", draw);
-        return () => window.removeEventListener("resize", draw);
+        window.addEventListener("themechange", draw);
+        return () => {
+            window.removeEventListener("resize", draw);
+            window.removeEventListener("themechange", draw);
+        };
     }, []);
 
     return (

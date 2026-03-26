@@ -16,7 +16,7 @@ export default async function Home() {
             href="https://github.com/ojas480"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-white"
+            className="hover:text-[var(--text)]"
           >
             GitHub ↗
           </a>
@@ -24,18 +24,18 @@ export default async function Home() {
             href="https://www.linkedin.com/in/ojaskalra/"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-white"
+            className="hover:text-[var(--text)]"
           >
             LinkedIn ↗
           </a>
-          <a href="mailto:ojaskrishwork@gmail.com" className="hover:text-white">
+          <a href="mailto:ojaskrishwork@gmail.com" className="hover:text-[var(--text)]">
             Email ↗
           </a>
           <a
             href="https://open.spotify.com/artist/3yzwkjP8ux7xvoAWRyCFuh"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-white"
+            className="hover:text-[var(--text)]"
           >
             My Spotify ↗
           </a>
@@ -48,7 +48,7 @@ export default async function Home() {
         {education.map((e, i) => (
           <div key={i} className="card">
             <div className="flex items-center justify-between">
-              <p className="text-sm font-medium text-white">{e.school}</p>
+              <p className="text-sm font-medium text-[var(--text)]">{e.school}</p>
               <span className="text-xs text-[var(--text-dim)] font-mono shrink-0 ml-4">
                 {e.date}
               </span>
@@ -64,7 +64,7 @@ export default async function Home() {
         {experiences.map((e, i) => (
           <div key={i} className="card">
             <div className="flex items-center justify-between">
-              <p className="text-sm font-medium text-white">{e.company}</p>
+              <p className="text-sm font-medium text-[var(--text)]">{e.company}</p>
               <span className="text-xs text-[var(--text-dim)] font-mono shrink-0 ml-4">
                 {e.date}
               </span>
@@ -75,21 +75,30 @@ export default async function Home() {
       </section>
 
       {/* ── Projects ── */}
-      <section className="mb-10">
-        <h2 className="section-label">Projects</h2>
-        {projects.map((p, i) => (
-          <div key={i} className="card flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-4">
-            <div className="sm:w-44 shrink-0 pt-0.5 flex items-center gap-2">
-              <p className="text-sm font-medium text-white">{p.title}</p>
-              {p.link && (
-                <a href={p.link} target="_blank" rel="noopener noreferrer" className="text-[var(--text-dim)] hover:text-white text-xs">↗</a>
+      <section className="mb-12">
+        <h2 className="section-label mb-4 border-none pb-0">Projects</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {projects.map((p, i) => (
+            <div key={i} className="p-4 sm:p-5 border border-[var(--border)] rounded-xl bg-transparent hover:bg-[var(--bg-card)] transition-colors h-full flex flex-col group">
+              {p.image && (
+                <div className="w-full h-40 sm:h-44 mb-4 overflow-hidden rounded-lg border border-[var(--border)] shrink-0 bg-[var(--bg-card)]">
+                  <img src={p.image} alt={p.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
+                </div>
               )}
+              <div className="flex justify-between items-start mb-2">
+                <h3 className="text-sm font-semibold text-[var(--text)]">{p.title}</h3>
+                {p.link && (
+                  <a href={p.link} target="_blank" rel="noopener noreferrer" className="text-[var(--text-dim)] hover:text-[var(--text)] transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+                  </a>
+                )}
+              </div>
+              <p className="text-xs text-[var(--text-dim)] leading-relaxed opacity-80 flex-grow">
+                {p.description}
+              </p>
             </div>
-            <p className="text-xs text-[var(--text-dim)] leading-relaxed opacity-70 flex-1">
-              {p.description}
-            </p>
-          </div>
-        ))}
+          ))}
+        </div>
       </section>
 
       {/* ── Research ── */}
@@ -102,7 +111,7 @@ export default async function Home() {
             </span>
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-2">
-                <p className="text-sm font-medium text-white leading-tight">
+                <p className="text-sm font-medium text-[var(--text)] leading-tight">
                   {r.title}
                 </p>
                 {r.link && (
@@ -110,7 +119,7 @@ export default async function Home() {
                     href={r.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[var(--text-dim)] hover:text-white text-xs"
+                    className="text-[var(--text-dim)] hover:text-[var(--text)] text-xs"
                   >
                     ↗
                   </a>
@@ -131,7 +140,7 @@ export default async function Home() {
         {awards.map((a, i) => (
           <div key={i} className="card flex flex-col sm:flex-row sm:items-start gap-1 sm:gap-4">
             <div className="sm:w-44 shrink-0 pt-0.5">
-              <p className="text-sm font-medium text-white">{a.title}</p>
+              <p className="text-sm font-medium text-[var(--text)]">{a.title}</p>
             </div>
             <p className="text-xs text-[var(--text-dim)] leading-relaxed opacity-70 flex-1">
               {a.description}
@@ -170,7 +179,7 @@ const education = [
   {
     school: "Georgia Institute of Technology",
     degree: "B.S. Computer Science",
-    gpa: "3.7/4.0",
+    gpa: "3.8/4.0",
     date: "Aug 2022–Dec 2025",
   },
 ];
@@ -211,30 +220,21 @@ const projects = [
     description:
       "Data-driven exploration of swings of competitive advantage in tennis. Honorable Mention at MCM 2024.",
     link: "/mcm-paper.pdf",
+    image: "/wimbledon.png",
   },
   {
     title: "Faulhaber's Formula Derivation",
     description:
       "A derivation and exploration of Faulhaber's formula for sums of powers.",
     link: "/OjasKalraDRP.pdf",
+    image: "/faulhaber.png",
   },
   {
     title: "Customer Insights Agentic AI",
     description:
       "Full-stack agentic AI application that analyzes and interacts with customer data to derive insights.",
     link: "https://customer-insights-agentic-ai-nfqo.vercel.app/",
-  },
-  {
-    title: "IMC Prosperity",
-    description:
-      "Top 100 out of 10,000 teams in the world's biggest trading competition.",
-    link: "https://github.com/ojas480/Prosperity2",
-  },
-  {
-    title: "Portfolio Website",
-    description:
-      "This site. Next.js 16, React 19, Tailwind CSS v4.",
-    link: "https://github.com/ojas480/portfolio",
+    image: "/customer_insights.png",
   },
 ];
 
