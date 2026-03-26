@@ -236,6 +236,13 @@ const projects = [
     link: "https://customer-insights-agentic-ai-nfqo.vercel.app/",
     image: "/customer_insights.png",
   },
+  {
+    title: "AI Music Detection",
+    description:
+      "Detecting AI music - support real artists <3",
+    link: "https://github.com/ojas480/AIMusicDetection",
+    image: "/aimusic.jpg",
+  },
 ];
 
 type ResearchItem = { title: string; venue?: string; date: string; description: string; link: string; };
