@@ -233,6 +233,13 @@ const experiences = [
 
 const projects = [
   {
+    title: "Connect 4 vs AI",
+    description:
+      "Chess.com-style Connect 4 with minimax AI, eval bar, move analysis, and post-game review",
+    link: "https://github.com/ojas480/Connect4AI",
+    image: "/connect4ai.png",
+  },
+  {
     title: "Analyzing Momentum at Wimbledon",
     description:
       "Honorable Mention at MCM 2024.",
