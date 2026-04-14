@@ -162,6 +162,9 @@ export default async function Home() {
             </span>
           ))}
         </div>
+        <p className="text-[10px] text-[var(--text-dim)] opacity-50 mt-3 ml-1">
+          * represents graduate level course
+        </p>
       </section>
 
       {/* ── My Music ── */}
