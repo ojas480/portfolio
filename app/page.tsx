@@ -225,7 +225,7 @@ const experiences = [
       "Summer 2025 quantitative trading internship at one of the world's leading market makers.",
   },
   {
-    role: "Researcher — Machine Learning for Financial Markets Lab",
+    role: "Researcher — Financial Services Innovation Lab",
     company: "Georgia Institute of Technology",
     date: "Jan 2024–Now",
     description:
@@ -287,7 +287,7 @@ const projects = [
 type ResearchItem = { title: string; venue?: string; date: string; description: string; link: string; };
 const research: ResearchItem[] = [
   {
-    title: "Machine Learning for Financial Markets",
+    title: "Financial Services Innovation Lab",
     date: "2024–Now",
     description:
       "Currently doing research on AI reproducibility",
