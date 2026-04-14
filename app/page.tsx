@@ -149,6 +149,21 @@ export default async function Home() {
         ))}
       </section>
 
+      {/* ── Relevant Courses ── */}
+      <section className="mb-10">
+        <h2 className="section-label">Relevant Courses</h2>
+        <div className="flex flex-wrap gap-2 mt-4">
+          {courses.map((course, i) => (
+            <span
+              key={i}
+              className="px-3 py-1 text-xs font-mono border border-[var(--border)] rounded-full text-[var(--text-dim)]"
+            >
+              {course}
+            </span>
+          ))}
+        </div>
+      </section>
+
       {/* ── My Music ── */}
       <section className="mb-10">
         <h2 className="section-label">My Music</h2>
@@ -296,4 +311,17 @@ const awards = [
     description:
       "Finished in the top 1% out of 10,000+ teams in the world's biggest trading competition",
   },
+];
+
+const courses = [
+  "CS 8803 Sequence Prediction*",
+  "CS 7632 Game AI*",
+  "CS 6476 Computer Vision*",
+  "CS 4641 Machine Learning",
+  "CS 4540 Advanced Algs",
+  "CS 4510 Automata and Complexity",
+  "Math 4150 Number Theory",
+  "Math 3406 Second Linear Algebra",
+  "Math 3236 Statistical Theory",
+  "Math 3235 Probability Theory",
 ];
