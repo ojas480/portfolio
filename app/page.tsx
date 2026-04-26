@@ -285,6 +285,11 @@ const projects = [
     link: "https://ojas480.github.io/Connect4AI/",
     image: "/connect4ai.png",
   },
+  {
+    title: "Brawl Stars AI Drafter",
+    description: "An AI-powered drafting tool for Brawl Stars",
+    link: "https://github.com/ojas480/BrawlStarsAIDrafter",
+  },
 ];
 
 type ResearchItem = { title: string; venue?: string; date: string; description: string; link: string; };
