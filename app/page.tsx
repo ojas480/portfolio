@@ -288,7 +288,7 @@ const projects = [
   {
     title: "Brawl Stars AI Drafter",
     description: "An AI-powered drafting tool for Brawl Stars",
-    link: "https://github.com/ojas480/BrawlStarsAIDrafter",
+    link: "https://brawlstarsaidraft.vercel.app/",
   },
 ];
 
