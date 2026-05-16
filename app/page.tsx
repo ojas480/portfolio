@@ -101,6 +101,33 @@ export default async function Home() {
         </div>
       </section>
 
+      {/* ── Writings ── */}
+      <section className="mb-12">
+        <h2 className="section-label mb-4 border-none pb-0">Writings</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {writings.map((p, i) => (
+            <div key={i} className="p-4 sm:p-5 border border-[var(--border)] rounded-xl bg-transparent hover:bg-[var(--bg-card)] transition-colors h-full flex flex-col group">
+              {p.image && (
+                <div className="w-full h-40 sm:h-44 mb-4 overflow-hidden rounded-lg border border-[var(--border)] shrink-0 bg-[var(--bg-card)]">
+                  <img src={p.image} alt={p.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
+                </div>
+              )}
+              <div className="flex justify-between items-start mb-2">
+                <h3 className="text-sm font-semibold text-[var(--text)]">{p.title}</h3>
+                {p.link && (
+                  <a href={p.link} target="_blank" rel="noopener noreferrer" className="text-[var(--text-dim)] hover:text-[var(--text)] transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg>
+                  </a>
+                )}
+              </div>
+              <p className="text-xs text-[var(--text-dim)] leading-relaxed opacity-80 flex-grow">
+                {p.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* ── Research ── */}
       <section className="mb-10">
         <h2 className="section-label">Research</h2>
@@ -249,7 +276,7 @@ const experiences = [
   },
 ];
 
-const projects = [
+const writings = [
   {
     title: "Analyzing Momentum at Wimbledon",
     description:
@@ -258,12 +285,21 @@ const projects = [
     image: "/wimbledon.png",
   },
   {
+    title: "Sequence Prediction Paper",
+    description:
+      "Research paper on sequence prediction.",
+    link: "/Ojas_Sequence_Prediction_Paper.pdf",
+  },
+  {
     title: "Faulhaber's Formula Derivation",
     description:
       "Derivation of Faulhaber's Formula",
     link: "/OjasKalraDRP.pdf",
     image: "/faulhaber.png",
   },
+];
+
+const projects = [
   {
     title: "Customer Insights Agentic AI",
     description:
